@@ -21,7 +21,8 @@ struct Color: Perspective, Equatable, CustomStringConvertible {
  @_transparent static var green: Self { Self(0, 1, 0) }
  @_transparent static var blue: Self { Self(0, 0, 1) }
  @_transparent static var grey: Self { Self(0.5, 0.5, 0.5) }
-
+ @_transparent static var yellow: Self { Self(0.5, 0.5, 0) }
+ 
  var description: String {
   switch self {
    case .black: return "Black"
@@ -30,6 +31,7 @@ struct Color: Perspective, Equatable, CustomStringConvertible {
    case .green: return "Green"
    case .blue: return "Blue"
    case .grey: return "Grey"
+   case .yellow: return "Yellow"
    default: return "Color [\(input[0]), \(input[1]), \(input[2])]"
   }
  }
