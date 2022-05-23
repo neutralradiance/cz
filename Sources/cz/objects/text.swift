@@ -1,5 +1,3 @@
-import Foundation
-
 struct Text: DynamicLayer {
  init(with input: Never) { fatalError() }
 }

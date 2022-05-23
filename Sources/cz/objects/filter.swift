@@ -17,9 +17,9 @@ extension AtomicFilter {
  @_transparent var inputPointer: UnsafeMutablePointer<Input> {
   _input.load(ordering: .relaxed)
  }
- var input: Input {
-  @_transparent unsafeAddress { UnsafePointer(inputPointer) }
-  @_transparent nonmutating unsafeMutableAddress { inputPointer }
+ @_transparent var input: Input {
+  unsafeAddress { UnsafePointer(inputPointer) }
+  nonmutating unsafeMutableAddress { inputPointer }
  }
 }
 
@@ -27,6 +27,10 @@ extension Filter {
  func filtering(_ input: Input) -> Output {
   var `self` = self
   return self.filter(input)
+ }
+ @discardableResult mutating func filter<A: Layer>(other: A) -> Output
+ where A.Input == Input {
+  filter(other.input)
  }
 }
 

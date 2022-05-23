@@ -1,16 +1,14 @@
 import XCTest
 @testable import cz
 
+// MARK: Test Objects
  /// Colors represent the combination of three different colors and their amount.
  /// Ideally, colors should represent light or signals that can be filtered
  /// to create this perception of color.
 struct Color: DynamicLayer, Equatable, CustomStringConvertible {
  var input: SIMD3<Double> = [0, 0, 0]
  init() {}
- init(with input: SIMD3<Double>) {
-  self.input = input
- }
- 
+ init(with input: SIMD3<Double>) { self.input = input }
  internal init(_ red: Double, _ green: Double, _ blue: Double) {
   input = [red, green, blue]
  }
@@ -42,6 +40,8 @@ extension Color: Filter {
   average(with: input)
  }
 }
+
+// MARK: - Test Cases
 
 final class czTests: XCTestCase {
  func testColor() {
